@@ -1,6 +1,10 @@
-
 from PIL import Image
 
+comb = [chr(x) for x in range(97,123)] + [str(i) for i in range(10)]    # [a:z] + [0:9]
+numbers = [i for i in range(1,37)]                                      # [1:37]
+ecode = dict(zip(numbers,comb))                                         # {"1":"a", "2":"b",     }
+dcode = dict(zip(comb,numbers))                                         # {"a":"1", "b":"2",     }
+ 
 def encode(im,text=""):
     width = im.size[0] 
     height = im.size[1]
@@ -14,14 +18,9 @@ def encode(im,text=""):
             im.putpixel((x, y), value)
     im.show(im)
 
-
-comb = [chr(x) for x in range(97,123)] + [str(i) for i in range(10)]    # [a:z] + [0:9]
-numbers = [i for i in range(1,37)]                                      # [1:37]
-ecode = dict(zip(numbers,comb))                                         # {"1":"a", "2":"b",     }
-dcode = dict(zip(comb,numbers))                                         # {"a":"1", "b":"2",     }
-
-text="abcz0129"
+text="9"
 r,g,b=0,0,0
+a=0
 for i in text:
     val = dcode.get(i)
     if (val>15) and (val<=30):
@@ -30,6 +29,5 @@ for i in text:
     elif (val>30):
         r+=15
         g+=15
-        b+=(val-30)
+        b=b+val-30
 print(r,g,b)
-
