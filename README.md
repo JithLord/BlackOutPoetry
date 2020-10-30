@@ -8,3 +8,4 @@
 - [ ] Better Layout
 - [ ] Improve Button Style
 - [ ] Good Background Image
+- [ ] Improve the decoding and encoding algorithm
