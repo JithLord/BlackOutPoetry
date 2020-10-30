@@ -1,14 +1,19 @@
-import tkinter
+import tkinter 
 from tkinter import filedialog
 from PIL import ImageTk,Image
-#from a import b,c
+from code import encode,decode
 
 window = tkinter.Tk()
 window.title("Blackout Poetry")
 w = window.winfo_screenwidth()
 h = window.winfo_screenheight()
 window.minsize(int(w/2),int(h/2))
-window.configure(bg="light cyan")
+
+text = ""
+text_label = ""
+image = [[]]
+img = [[]]
+up_image = [[]]
 
 canvas = tkinter.Canvas(window,width=w,height=h)
 canvas.place(x=0,y=0)
@@ -56,7 +61,6 @@ def upload_image() :
     label.place(x=30,y=95)
     disp_image(file)
 
-    
 upload = tkinter.Button(window,
                 text="UPLOAD IMAGE",
                 width=15,
@@ -65,13 +69,12 @@ upload.place(x=30,y=70)
 
 #displaying uploaded image
 def disp_image(file) :    
+    global image 
+    global img
     img = Image.open(file)
     image = ImageTk.PhotoImage(img)
     canvas1.create_image(240,240,image=image)
     canvas1.image = image   
-    img2=tkinter.PhotoImage(file='C:\\Users\\Gaurav Rajan\\Desktop\\testimage2.png')
-    canvas2.create_image(240,240, image=img2)
-    canvas2.img2=img2
 
 #radio buttons  
 c = tkinter.IntVar()
@@ -93,6 +96,15 @@ def clicked():
         text_label = tkinter.Label(window, text=text, font="Times 12")
         text_label.place(x=380,y=652)
 
+        #calling the functions
+        global up_image
+        if (c.get()==1) : 
+            modified_image = encode(img,text)       #modified image is only attributes
+        elif (c.get()==2) :
+            modified_image = decode(img)    
+        up_image = ImageTk.PhotoImage(modified_image)
+        update_image(up_image)
+
     if(c.get()==1) : 
         message = "Enter text to Encode"
     elif(c.get()==2) :
@@ -107,18 +119,6 @@ def clicked():
     txt_box.place(x=20,y=250)
     txt_label.place(x=20,y=220)
 
-
-    #calling the functions
-    #if (c.get()==1) : 
-        #call encode with requirwd parameters
-        #up_image = zzz()
-    #elif (c.get()==2) :
-        #call decide with required parameters
-        #up_image = zzz()
-    
-    #return of the function must be an image. Pass it to another function
-    # update_image(up_image)
-
 rad1 = tkinter.Radiobutton(window, 
             text="Encode",
             variable=c,
@@ -131,21 +131,22 @@ rad2 = tkinter.Radiobutton(window,
             text="Decode",
             variable=c,
             value=2,
-            indicator=0,
+            indicator=0,    #to change style
             background="pink",
             command=clicked)
 
 rad1.place(x=20, y=150)
 rad2.place(x=120, y=150)
 
-#def update_image(up_image) :
+def update_image(up_image) :
+    canvas2.create_image(240,240, image=up_image)
+    canvas2.up_image=up_image
 
-text_label_.pack_forget()
+#text_label_.pack_forget()
 #reset and exit buttons
 def clear_img() :
     canvas1.delete("all")
     canvas2.delete("all")
-
 
 def clear_text() :
     text_label.pack_forget()
