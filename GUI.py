@@ -31,8 +31,9 @@ canvas2.place(x=850,y=150)
 canvas2_label = tkinter.Label(window, text='Updated Image', fg='white', bg='black')
 canvas2_label.place(x=1050,y=120)
 
-text_label_ = tkinter.Label(window, text="TEXT : ", fg='white', bg='black', font="Times 14")
-text_label_.place(x=300,y=650)
+#TEXT LABEL : 
+#text_label_ = tkinter.Label(window, text="TEXT : ", fg='white', bg='black', font="Times 14")
+#text_label_.place(x=300,y=650)
 
 #img1=tkinter.PhotoImage(file='C:\\Users\\Gaurav Rajan\\Desktop\\testimage1.png')
 #img2=tkinter.PhotoImage(file='C:\\Users\\Gaurav Rajan\\Desktop\\testimage2.png')
@@ -72,6 +73,23 @@ def disp_image(file) :
     global image 
     global img
     img = Image.open(file)
+    width,height = img.size
+    ratio = width/height
+    if (ratio>1) :   # landscape image
+        width = 480     # max possible width in canvas
+        height = (int)(width/ratio)
+        #print(width,height)
+        img = img.resize((width,height), Image.ANTIALIAS)
+    elif (ratio<1):     #potrait image
+        height = 480    #max possible height in canvas 
+        width = (int)(height*ratio)
+        #print(width,height)
+        img = img.resize((width,height), Image.ANTIALIAS)
+    else :      #square image
+        height = 480 
+        width = 480
+        img = img.resize((width,height), Image.ANTIALIAS)
+
     image = ImageTk.PhotoImage(img)
     canvas1.create_image(240,240,image=image)
     canvas1.image = image   
@@ -154,8 +172,8 @@ def clear_text() :
 
 clear_images = tkinter.Button(window,text="Clear Images",command=clear_img)
 clear_images.place(x=20,y=350)
-clear_images = tkinter.Button(window,text="Clear Text",command=clear_text)
-clear_images.place(x=110,y=350)
+clear_text = tkinter.Button(window,text="Clear Text",command=clear_text)
+clear_text.place(x=110,y=350)
 
 quit_button = tkinter.Button(window,
             text="Exit", 
