@@ -76,23 +76,23 @@ def disp_image(file) :
     r_img = img     #resized image for canvas
     width,height = img.size
     ratio = width/height
-    ratio = 1
     if (ratio>1) :   # landscape image
         width = 480     # max possible width in canvas
         height = (int)(width/ratio)
-        #print(width,height)
+        print(width,height)
         r_img = img.resize((width,height), Image.ANTIALIAS)
     elif (ratio<1):     #potrait image
         height = 480    #max possible height in canvas 
         width = (int)(height*ratio)
-        #print(width,height)
+        print(width,height)
         r_img = img.resize((width,height), Image.ANTIALIAS)
     else :      #square image
         height = 480 
         width = 480
         r_img = img.resize((width,height), Image.ANTIALIAS)
 
-    image = ImageTk.PhotoImage(r_img)
+    img=r_img
+    image = ImageTk.PhotoImage(r_img)    #converting to image type 
     canvas1.create_image(240,240,image=image)
     canvas1.image = image 
 
@@ -119,12 +119,10 @@ def clicked():
         #calling the functions
         global up_image
         if (c.get()==1) : 
-            print(img.size)
             modified_image = encode(img,text)       #modified image is only attributes
         elif (c.get()==2) :
-            modified_image = decode(img)    
-        up_image = ImageTk.PhotoImage(modified_image)
-        update_image(up_image)
+            modified_image = decode(img)
+        update_image(modified_image)
 
     if(c.get()==1) : 
         message = "Enter Text"  #enter text to encode
@@ -159,9 +157,36 @@ rad2 = tkinter.Radiobutton(window,
 rad1.place(x=20, y=150)
 rad2.place(x=120, y=150)
 
-def update_image(up_image) :    #display updated image
+def update_image(modified_image) :    #display updated image
+    
+    width,height = modified_image.size
+    ratio = width/height
+    r_img = modified_image 
+    if (ratio>1) :   # landscape image
+        width = 480     # max possible width in canvas
+        height = (int)(width/ratio)
+        #print(width,height)
+        r_img = modified_image.resize((width,height), Image.ANTIALIAS)
+    elif (ratio<1):     #potrait image
+        height = 480    #max possible height in canvas 
+        width = (int)(height*ratio)
+        #print(width,height)
+        r_img = modified_image.resize((width,height), Image.ANTIALIAS)
+    else :      #square image
+        height = 480 
+        width = 480
+        r_img = modified_image.resize((width,height), Image.ANTIALIAS)
+
+    up_image = ImageTk.PhotoImage(r_img)    #converting to image type
     canvas2.create_image(240,240, image=up_image)
     canvas2.up_image=up_image
+
+    # saving the result
+    def save_result() : 
+        result_img = modified_image.save("C:\\Users\\Gaurav Rajan\\Desktop\\result.jpg")
+    
+    save = tkinter.Button(window,text="Save", command=save_result)
+    save.place(x=1300,y=650)
 
 #text_label_.pack_forget()
 #reset and exit buttons
