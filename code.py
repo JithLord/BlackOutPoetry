@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import ImageTk,Image
 import string
     # 0 1-26 " " 27-36
     #   a-z  " "  0-9
@@ -43,6 +43,7 @@ def encode(im,text=""):
                 im.putpixel((x, y), value)
     im.show(im)
     im.save("down.jpg")
+    return im 
 
 
 def decode(im):
@@ -63,3 +64,4 @@ def decode(im):
             continue
         break
     # print(text,end="")
+    return im
