@@ -73,50 +73,53 @@ def disp_image(file) :
     global image 
     global img
     img = Image.open(file)
+    r_img = img     #resized image for canvas
     width,height = img.size
     ratio = width/height
+    ratio = 1
     if (ratio>1) :   # landscape image
         width = 480     # max possible width in canvas
         height = (int)(width/ratio)
         #print(width,height)
-        img = img.resize((width,height), Image.ANTIALIAS)
+        r_img = img.resize((width,height), Image.ANTIALIAS)
     elif (ratio<1):     #potrait image
         height = 480    #max possible height in canvas 
         width = (int)(height*ratio)
         #print(width,height)
-        img = img.resize((width,height), Image.ANTIALIAS)
+        r_img = img.resize((width,height), Image.ANTIALIAS)
     else :      #square image
         height = 480 
         width = 480
-        img = img.resize((width,height), Image.ANTIALIAS)
+        r_img = img.resize((width,height), Image.ANTIALIAS)
 
-    image = ImageTk.PhotoImage(img)
+    image = ImageTk.PhotoImage(r_img)
     canvas1.create_image(240,240,image=image)
-    canvas1.image = image   
+    canvas1.image = image 
 
 #radio buttons  
 c = tkinter.IntVar()
 def clicked():
-    if(c.get()==1) :
-        selection = "You have chosen to Encode" 
-    else : 
-        selection = "You have chosen to Decode"
-    label = tkinter.Label(window,text=selection)
-    label.place(x=20, y=180)
+    #if(c.get()==1) :
+        #selection = "You have chosen to Encode"    #message
+    #else : 
+        #selection = "You have chosen to Decode"    #message
+    #label = tkinter.Label(window,text=selection)
+    #label.place(x=20, y=180)
     
     #text entry box
     def extract_text() :
         global text
-        global text_label
+        #global text_label
         text = txt_box.get()
         #txt_box.delete(0,'end')    #clear content once entered
         #txt_button['state'] = tkinter.DISABLED     #freeze entry button
         text_label = tkinter.Label(window, text=text, font="Times 12")
-        text_label.place(x=380,y=652)
+        #text_label.place(x=380,y=652)
 
         #calling the functions
         global up_image
         if (c.get()==1) : 
+            print(img.size)
             modified_image = encode(img,text)       #modified image is only attributes
         elif (c.get()==2) :
             modified_image = decode(img)    
@@ -124,9 +127,9 @@ def clicked():
         update_image(up_image)
 
     if(c.get()==1) : 
-        message = "Enter text to Encode"
+        message = "Enter Text"  #enter text to encode
     elif(c.get()==2) :
-        message = "Enter text to Decode"
+        message = "Enter Text"  #enter text to decode
     txt_box = tkinter.Entry(window)
     txt_label = tkinter.Label(window, text=message)
     txt_button = tkinter.Button(window,
@@ -156,7 +159,7 @@ rad2 = tkinter.Radiobutton(window,
 rad1.place(x=20, y=150)
 rad2.place(x=120, y=150)
 
-def update_image(up_image) :
+def update_image(up_image) :    #display updated image
     canvas2.create_image(240,240, image=up_image)
     canvas2.up_image=up_image
 
