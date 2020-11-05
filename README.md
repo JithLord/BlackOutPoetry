@@ -2,8 +2,7 @@
 ![image](https://user-images.githubusercontent.com/45201620/97779831-c6471380-1ba6-11eb-90bc-6861e485c594.png)
 ![image](https://user-images.githubusercontent.com/45201620/97779842-dd860100-1ba6-11eb-9443-886f854e7412.png)
 ![image](https://user-images.githubusercontent.com/45201620/97779863-fabacf80-1ba6-11eb-8b9b-be9c91aa9176.png)
-![image](https://user-images.githubusercontent.com/45201620/97779928-67ce6500-1ba7-11eb-95e5-dc512a20fae8.png)
-![image](https://user-images.githubusercontent.com/45201620/97779953-8d5b6e80-1ba7-11eb-9b5f-e6e2ecd78140.png)
+
 
 ### Functionality completed 
 - [x] Encode text within Images
