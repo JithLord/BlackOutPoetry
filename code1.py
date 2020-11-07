@@ -2,8 +2,8 @@ from PIL import Image
 import string
     # 0 1-26 " " 27-36
     #   a-z  " "  0-9
-comb = [""]+[chr(x) for x in range(97,123)] + [str(i) for i in range(10)]    # [a:z] + [0:9]
-numbers = [i for i in range(38)]                                      # [1:37]
+comb = [""]+[chr(x) for x in range(97,123)] +[" "]+ [str(i) for i in range(10)]    # [a:z] + [0:9]
+numbers = [i for i in range(39)]                                      # [1:37]
 ecode = dict(zip(numbers,comb))                                         # {"1":"a", "2":"b",     }
 dcode = dict(zip(comb,numbers))                                         # {"a":"1", "b":"2",     }
  
