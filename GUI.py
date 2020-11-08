@@ -79,19 +79,18 @@ def disp_image(file) :
     if (ratio>1) :   # landscape image
         width = 480     # max possible width in canvas
         height = (int)(width/ratio)
-        print(width,height)
+        #print(width,height)
         r_img = img.resize((width,height), Image.ANTIALIAS)
-    elif (ratio<1):     #potrait image
+    elif (ratio<1) :     #potrait image
         height = 480    #max possible height in canvas 
         width = (int)(height*ratio)
-        print(width,height)
+        #print(width,height)
         r_img = img.resize((width,height), Image.ANTIALIAS)
     else :      #square image
         height = 480 
         width = 480
         r_img = img.resize((width,height), Image.ANTIALIAS)
 
-    img=r_img
     image = ImageTk.PhotoImage(r_img)    #converting to image type 
     canvas1.create_image(240,240,image=image)
     canvas1.image = image 
