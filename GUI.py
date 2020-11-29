@@ -7,7 +7,7 @@ window = tkinter.Tk()
 window.title("Blackout Poetry")
 w = window.winfo_screenwidth()
 h = window.winfo_screenheight()
-window.minsize(int(w/2),int(h/2))
+window.minsize(w,h)
 
 text = ""
 text_label = ""
@@ -33,29 +33,23 @@ canvas2_label.place(x=1050,y=120)
 
 
 #adding image buttons : 
-upload_image_button=ImageTk.PhotoImage(Image.open('Icons\\upload.png').resize((175,40), Image.ANTIALIAS)) #1.2
-encode_image_button=ImageTk.PhotoImage(Image.open('Icons\\encode.png').resize((118,33), Image.ANTIALIAS)) #1.3
-decode_image_button=ImageTk.PhotoImage(Image.open('Icons\\decode.png').resize((118,33), Image.ANTIALIAS)) #1.3
-proceed_image_button=ImageTk.PhotoImage(Image.open('Icons\\proceed.png').resize((128,38), Image.ANTIALIAS)) #1.2
-clear_text_image_button=ImageTk.PhotoImage(Image.open('Icons\\clear_text.png').resize((93,29), Image.ANTIALIAS))
-clear_images_image_button=ImageTk.PhotoImage(Image.open('Icons\\clear_images.png').resize((110,29), Image.ANTIALIAS))
-save_image_button=ImageTk.PhotoImage(Image.open('Icons\\save.png').resize((106,38), Image.ANTIALIAS))
-exit_image_button=ImageTk.PhotoImage(Image.open('Icons\\exit.png').resize((50,50), Image.ANTIALIAS))
+upload_image_button=ImageTk.PhotoImage(Image.open('upload.png').resize((175,40), Image.ANTIALIAS)) #1.2
+encode_image_button=ImageTk.PhotoImage(Image.open('encode.png').resize((118,33), Image.ANTIALIAS)) #1.3
+decode_image_button=ImageTk.PhotoImage(Image.open('decode.png').resize((118,33), Image.ANTIALIAS)) #1.3
+proceed_image_button=ImageTk.PhotoImage(Image.open('proceed.png').resize((128,38), Image.ANTIALIAS)) #1.2
+clear_text_image_button=ImageTk.PhotoImage(Image.open('clear_text.png').resize((93,29), Image.ANTIALIAS))
+clear_images_image_button=ImageTk.PhotoImage(Image.open('clear_images.png').resize((110,29), Image.ANTIALIAS))
+save_image_button=ImageTk.PhotoImage(Image.open('save.png').resize((106,38), Image.ANTIALIAS))
+exit_image_button=ImageTk.PhotoImage(Image.open('exit.png').resize((50,50), Image.ANTIALIAS))
 
 
-#adding text as a label : 
-#tkinter.Label(window, 
-#		 text="Blackout Poetry",
-#		 fg = "white",
-#		 bg = "black",
-#		 font = "Helvetica 32 bold italic").pack()
 
 #adding upload image box
 def upload_image() :
     file = filedialog.askopenfilename(initialdir = "/", 
                     title="Select An Image",
                     filetype=(("JPEG","*.jpg"),("PNG","*.png"),("Bitmap","*.bmp")))
-    label = tkinter.Label(window,text=file[:9]+"........"+file[file.rfind("/"):],font="Helvetica 8 italic")
+    label = tkinter.Label(window,text=file[:14]+str("...")+file[-12:],font="Helvetica 8 italic")
     label.place(x=30,y=200)
     disp_image(file)
 
@@ -66,8 +60,7 @@ upload = tkinter.Button(window,
                 bg="grey",
                 cursor='hand2',
                 activebackground='grey',
-                highlightthickness = 0, bd = 0,
-                border=0)
+                highlightthickness=0)
 upload.place(x=30,y=150)
 
 #displaying uploaded image
@@ -97,6 +90,8 @@ def disp_image(file) :
     canvas1.create_image(240,240,image=image)
     canvas1.image = image 
 
+
+
 #radio buttons  
 c = tkinter.IntVar()
 def clicked():
@@ -120,10 +115,10 @@ def clicked():
         #calling the functions
         global up_image
         if (c.get()==1) : 
-            print(text)
             modified_image = encode(img,text)       #modified image is only attributes
         elif (c.get()==2) :
-            modified_image = decode(img)
+            text,modified_image = decode(img)
+            print(text)
         update_image(modified_image)
 
     if(c.get()==1) : 
@@ -138,7 +133,7 @@ def clicked():
             cursor='hand2',
             bg='grey',
             activebackground='grey',
-            border=0,highlightthickness = 0, bd = 0)
+            border=0)
 
     proceed_button.place(x=20,y=380)
     txt_box.place(x=20,y=330)
@@ -153,7 +148,7 @@ rad1 = tkinter.Radiobutton(window,
             border=0,
             command=clicked,
             cursor='hand2',
-            activebackground='grey',highlightthickness = 0, bd = 0)
+            activebackground='grey')
 
 rad2 = tkinter.Radiobutton(window, 
             image=decode_image_button,
@@ -164,10 +159,12 @@ rad2 = tkinter.Radiobutton(window,
             border=0,
             command=clicked,
             cursor='hand2',
-            activebackground='grey',highlightthickness = 0, bd = 0)
+            activebackground='grey')
 
 rad1.place(x=20, y=240)
 rad2.place(x=155, y=240)
+
+
 
 def update_image(modified_image) :    #display updated image
     
@@ -195,7 +192,7 @@ def update_image(modified_image) :    #display updated image
 
     # saving the result
     def save_result() : 
-        result_img = modified_image.save("C:\\Users\\Gaurav Rajan\\Desktop\\result.jpg")
+        result_img = modified_image.save("result.jpg")
     
     save = tkinter.Button(window,
                 image=save_image_button, 
@@ -203,7 +200,7 @@ def update_image(modified_image) :    #display updated image
                 cursor='hand2',
                 border=0,
                 bg='grey',
-                activebackground='grey',highlightthickness = 0, bd = 0)
+                activebackground='grey')
     save.place(x=1225,y=650)
 
 #text_label_.pack_forget()
@@ -216,15 +213,15 @@ def clear_text() :
     text_label.pack_forget()
     text=''
 
-clear_images = tkinter.Button(window,image=clear_images_image_button,command=clear_img,border=0,activebackground='grey',bg='grey',highlightthickness = 0, bd = 0)
+clear_images = tkinter.Button(window,image=clear_images_image_button,command=clear_img,border=0,activebackground='grey',bg='grey')
 clear_images.place(x=20,y=480)
-clear_text = tkinter.Button(window,image=clear_text_image_button,command=clear_text,border=0,activebackground='grey',bg='grey',highlightthickness = 0, bd = 0)
+clear_text = tkinter.Button(window,image=clear_text_image_button,command=clear_text,border=0,activebackground='grey',bg='grey')
 clear_text.place(x=150,y=480)
 
 quit_button = tkinter.Button(window,
             image=exit_image_button, 
             command=window.quit,
-            border=0,highlightthickness = 0, bd = 0)
+            border=0)
 quit_button.place(x=20,y=530)
 
 window.mainloop()
