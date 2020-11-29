@@ -17,7 +17,7 @@ up_image = [[]]
 
 canvas = tkinter.Canvas(window,width=w,height=h,highlightthickness=0)
 canvas.place(x=0,y=0)
-back=tkinter.PhotoImage(file='C:\\Users\\Gaurav Rajan\\Desktop\\back1.png')
+back=ImageTk.PhotoImage(Image.open('C:\\Users\\Gaurav Rajan\\Desktop\\back1.png').resize((w,h), Image.ANTIALIAS))
 canvas.create_image(int(w/2),int(h/2), anchor="center", image=back)
 canvas.back=back
 
