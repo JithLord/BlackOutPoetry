@@ -55,7 +55,7 @@ def upload_image() :
     file = filedialog.askopenfilename(initialdir = "/", 
                     title="Select An Image",
                     filetype=(("JPEG","*.jpg"),("PNG","*.png"),("Bitmap","*.bmp")))
-    label = tkinter.Label(window,text=file[:14]+str("...")+file[-12:],font="Helvetica 8 italic")
+    label = tkinter.Label(window,text=file[:9]+"........"+file[file.rfind("/"):],font="Helvetica 8 italic")
     label.place(x=30,y=200)
     disp_image(file)
 
