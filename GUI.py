@@ -17,7 +17,7 @@ up_image = [[]]
 
 canvas = tkinter.Canvas(window,width=w,height=h,highlightthickness=0)
 canvas.place(x=0,y=0)
-back=ImageTk.PhotoImage(Image.open('C:\\Users\\Gaurav Rajan\\Desktop\\back1.png').resize((w,h), Image.ANTIALIAS))
+back=ImageTk.PhotoImage(Image.open('back1.png').resize((w,h), Image.ANTIALIAS))
 canvas.create_image(int(w/2),int(h/2), anchor="center", image=back)
 canvas.back=back
 
@@ -33,14 +33,14 @@ canvas2_label.place(x=1050,y=120)
 
 
 #adding image buttons : 
-upload_image_button=ImageTk.PhotoImage(Image.open('C:\\Users\\Gaurav Rajan\\Desktop\\upload.png').resize((175,40), Image.ANTIALIAS)) #1.2
-encode_image_button=ImageTk.PhotoImage(Image.open('C:\\Users\\Gaurav Rajan\\Desktop\\encode.png').resize((118,33), Image.ANTIALIAS)) #1.3
-decode_image_button=ImageTk.PhotoImage(Image.open('C:\\Users\\Gaurav Rajan\\Desktop\\decode.png').resize((118,33), Image.ANTIALIAS)) #1.3
-proceed_image_button=ImageTk.PhotoImage(Image.open('C:\\Users\\Gaurav Rajan\\Desktop\\proceed.png').resize((128,38), Image.ANTIALIAS)) #1.2
-clear_text_image_button=ImageTk.PhotoImage(Image.open('C:\\Users\\Gaurav Rajan\\Desktop\\clear_text.png').resize((93,29), Image.ANTIALIAS))
-clear_images_image_button=ImageTk.PhotoImage(Image.open('C:\\Users\\Gaurav Rajan\\Desktop\\clear_images.png').resize((110,29), Image.ANTIALIAS))
-save_image_button=ImageTk.PhotoImage(Image.open('C:\\Users\\Gaurav Rajan\\Desktop\\save.png').resize((106,38), Image.ANTIALIAS))
-exit_image_button=ImageTk.PhotoImage(Image.open('C:\\Users\\Gaurav Rajan\\Desktop\\exit.png').resize((50,50), Image.ANTIALIAS))
+upload_image_button=ImageTk.PhotoImage(Image.open('Icons\\upload.png').resize((175,40), Image.ANTIALIAS)) #1.2
+encode_image_button=ImageTk.PhotoImage(Image.open('Icons\\encode.png').resize((118,33), Image.ANTIALIAS)) #1.3
+decode_image_button=ImageTk.PhotoImage(Image.open('Icons\\decode.png').resize((118,33), Image.ANTIALIAS)) #1.3
+proceed_image_button=ImageTk.PhotoImage(Image.open('Icons\\proceed.png').resize((128,38), Image.ANTIALIAS)) #1.2
+clear_text_image_button=ImageTk.PhotoImage(Image.open('Icons\\clear_text.png').resize((93,29), Image.ANTIALIAS))
+clear_images_image_button=ImageTk.PhotoImage(Image.open('Icons\\clear_images.png').resize((110,29), Image.ANTIALIAS))
+save_image_button=ImageTk.PhotoImage(Image.open('Icons\\save.png').resize((106,38), Image.ANTIALIAS))
+exit_image_button=ImageTk.PhotoImage(Image.open('Icons\\exit.png').resize((50,50), Image.ANTIALIAS))
 
 
 #adding text as a label : 
@@ -65,7 +65,9 @@ upload = tkinter.Button(window,
                 borderwidth=0,
                 bg="grey",
                 cursor='hand2',
-                activebackground='grey')
+                activebackground='grey',
+                highlightthickness = 0, bd = 0,
+                border=0)
 upload.place(x=30,y=150)
 
 #displaying uploaded image
@@ -136,7 +138,7 @@ def clicked():
             cursor='hand2',
             bg='grey',
             activebackground='grey',
-            border=0)
+            border=0,highlightthickness = 0, bd = 0)
 
     proceed_button.place(x=20,y=380)
     txt_box.place(x=20,y=330)
@@ -151,7 +153,7 @@ rad1 = tkinter.Radiobutton(window,
             border=0,
             command=clicked,
             cursor='hand2',
-            activebackground='grey')
+            activebackground='grey',highlightthickness = 0, bd = 0)
 
 rad2 = tkinter.Radiobutton(window, 
             image=decode_image_button,
@@ -162,7 +164,7 @@ rad2 = tkinter.Radiobutton(window,
             border=0,
             command=clicked,
             cursor='hand2',
-            activebackground='grey')
+            activebackground='grey',highlightthickness = 0, bd = 0)
 
 rad1.place(x=20, y=240)
 rad2.place(x=155, y=240)
@@ -201,7 +203,7 @@ def update_image(modified_image) :    #display updated image
                 cursor='hand2',
                 border=0,
                 bg='grey',
-                activebackground='grey')
+                activebackground='grey',highlightthickness = 0, bd = 0)
     save.place(x=1225,y=650)
 
 #text_label_.pack_forget()
@@ -214,15 +216,15 @@ def clear_text() :
     text_label.pack_forget()
     text=''
 
-clear_images = tkinter.Button(window,image=clear_images_image_button,command=clear_img,border=0,activebackground='grey',bg='grey')
+clear_images = tkinter.Button(window,image=clear_images_image_button,command=clear_img,border=0,activebackground='grey',bg='grey',highlightthickness = 0, bd = 0)
 clear_images.place(x=20,y=480)
-clear_text = tkinter.Button(window,image=clear_text_image_button,command=clear_text,border=0,activebackground='grey',bg='grey')
+clear_text = tkinter.Button(window,image=clear_text_image_button,command=clear_text,border=0,activebackground='grey',bg='grey',highlightthickness = 0, bd = 0)
 clear_text.place(x=150,y=480)
 
 quit_button = tkinter.Button(window,
             image=exit_image_button, 
             command=window.quit,
-            border=0)
+            border=0,highlightthickness = 0, bd = 0)
 quit_button.place(x=20,y=530)
 
 window.mainloop()
