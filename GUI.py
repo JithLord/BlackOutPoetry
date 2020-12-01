@@ -40,7 +40,7 @@ proceed_image_button=ImageTk.PhotoImage(Image.open('proceed.png').resize((128,38
 clear_text_image_button=ImageTk.PhotoImage(Image.open('clear_text.png').resize((93,29), Image.ANTIALIAS))
 clear_images_image_button=ImageTk.PhotoImage(Image.open('clear_images.png').resize((110,29), Image.ANTIALIAS))
 save_image_button=ImageTk.PhotoImage(Image.open('save.png').resize((106,38), Image.ANTIALIAS))
-exit_image_button=ImageTk.PhotoImage(Image.open('exit.png').resize((50,50), Image.ANTIALIAS))
+exit_image_button=ImageTk.PhotoImage(Image.open('exit.png').resize((48,23), Image.ANTIALIAS))
 
 
 
