@@ -14,6 +14,9 @@ text_label = ""
 image = [[]]
 img = [[]]
 up_image = [[]]
+txt_box=[]
+txt_lavel=""
+file=""
 
 canvas = tkinter.Canvas(window,width=w,height=h,highlightthickness=0)
 canvas.place(x=0,y=0)
@@ -21,33 +24,36 @@ back=ImageTk.PhotoImage(Image.open('back1.png').resize((w,h), Image.ANTIALIAS))
 canvas.create_image(int(w/2),int(h/2), anchor="center", image=back)
 canvas.back=back
 
-
 canvas1 = tkinter.Canvas(window,width=480, height=480,bg="gray50")
 canvas1.place(x=300,y=150)
-colorss = '#%02x%02x%02x' % (48,39,34)
-canvas1_label = tkinter.Label(window, text='Original Image', fg='white',font=(None, 15), bg=colorss)
-canvas1_label.place(x=480,y=120)
+canvas1_label_bg = '#%02x%02x%02x' % (44,37,31)
+canvas1_label = tkinter.Label(window, text='Original Image', fg='white', bg=canvas1_label_bg, font=(None,12))
+canvas1_label.place(x=500,y=120)
 
 canvas2 = tkinter.Canvas(window,width=480, height=480,bg="gray50")
 canvas2.place(x=850,y=150)
-canvas2_label = tkinter.Label(window, text='Updated Image', fg='white',font=(None, 15), bg=colorss)
-canvas2_label.place(x=1030,y=120)
+canvas2_label_bg = '#%02x%02x%02x' % (46,38,35)
+canvas2_label = tkinter.Label(window, text='Updated Image', fg='white', bg=canvas2_label_bg, font=(None,12))
+canvas2_label.place(x=1050,y=120)
 
 
 #adding image buttons : 
-upload_image_button=ImageTk.PhotoImage(Image.open('upload.png').resize((175,40), Image.ANTIALIAS)) #1.2
-encode_image_button=ImageTk.PhotoImage(Image.open('encode.png').resize((118,33), Image.ANTIALIAS)) #1.3
-decode_image_button=ImageTk.PhotoImage(Image.open('decode.png').resize((118,33), Image.ANTIALIAS)) #1.3
-proceed_image_button=ImageTk.PhotoImage(Image.open('proceed.png').resize((128,38), Image.ANTIALIAS)) #1.2
-clear_text_image_button=ImageTk.PhotoImage(Image.open('clear_text.png').resize((93,29), Image.ANTIALIAS))
-clear_images_image_button=ImageTk.PhotoImage(Image.open('clear_images.png').resize((110,29), Image.ANTIALIAS))
-save_image_button=ImageTk.PhotoImage(Image.open('save.png').resize((106,38), Image.ANTIALIAS))
-exit_image_button=ImageTk.PhotoImage(Image.open('exit.png').resize((48,23), Image.ANTIALIAS))
+upload_image_button=ImageTk.PhotoImage(Image.open('Icons\\upload.png').resize((175,40), Image.ANTIALIAS)) #1.2
+encode_image_button=ImageTk.PhotoImage(Image.open('Icons\\encode.png').resize((118,33), Image.ANTIALIAS)) #1.3
+decode_image_button=ImageTk.PhotoImage(Image.open('Icons\\decode.png').resize((118,33), Image.ANTIALIAS)) #1.3
+proceed_image_button=ImageTk.PhotoImage(Image.open('Icons\\proceed.png').resize((128,38), Image.ANTIALIAS)) #1.2
+clear_text_image_button=ImageTk.PhotoImage(Image.open('Icons\\clear_text.png').resize((93,29), Image.ANTIALIAS))
+clear_images_image_button=ImageTk.PhotoImage(Image.open('Icons\\clear_images.png').resize((110,29), Image.ANTIALIAS))
+save_image_button=ImageTk.PhotoImage(Image.open('Icons\\save.png').resize((106,38), Image.ANTIALIAS))
+exit_image_button=ImageTk.PhotoImage(Image.open('Icons\\exit.png').resize((87,39), Image.ANTIALIAS)) #1.3
+encode_set_image=ImageTk.PhotoImage(Image.open('Icons\\encode_set.png').resize((118,33), Image.ANTIALIAS)) #1.3
+decode_set_image=ImageTk.PhotoImage(Image.open('Icons\\decode_set.png').resize((118,33), Image.ANTIALIAS)) #1.3
 
 
 
 #adding upload image box
 def upload_image() :
+    global file
     file = filedialog.askopenfilename(initialdir = "/", 
                     title="Select An Image",
                     filetype=(("JPEG","*.jpg"),("PNG","*.png"),("Bitmap","*.bmp")))
@@ -55,16 +61,15 @@ def upload_image() :
     label.place(x=30,y=200)
     disp_image(file)
 
-uploadcolor = '#%02x%02x%02x' % (50, 39, 35)
+uploadbg = '#%02x%02x%02x' % (50, 39, 35)
 upload = tkinter.Button(window,
                 image=upload_image_button,
                 command=upload_image,
                 borderwidth=0,
-                bg=uploadcolor,
+                bg=uploadbg,
                 cursor='hand2',
-                activebackground='grey',
-                highlightthickness = 0, bd = 0,
-                border=0)
+                activebackground=uploadbg,
+                highlightthickness=0)
 upload.place(x=30,y=150)
 
 #displaying uploaded image
@@ -108,62 +113,85 @@ def clicked():
     
     #text entry box
     def extract_text() :
-        global text
+        #global text
         #global text_label
-        text = txt_box.get()
+        #text = txt_box.get()
         #txt_box.delete(0,'end')    #clear content once entered
         #txt_button['state'] = tkinter.DISABLED     #freeze entry button
-        text_label = tkinter.Label(window, text=text, font="Times 12")
+        #text_label = tkinter.Label(window, text=text, font="Times 12")
         #text_label.place(x=380,y=652)
 
         #calling the functions
         global up_image
         if (c.get()==1) : 
+            global text
+            text = txt_box.get()
+            #txt_box.delete(0,'end')    #clear content once entered
+            #txt_button['state'] = tkinter.DISABLED     #freeze entry button
+            text_label = tkinter.Label(window,text=text,font="Times 12")
             modified_image = encode(img,text)       #modified image is only attributes
+
         elif (c.get()==2) :
             text,modified_image = decode(img)
-            print(text)
-        update_image(modified_image)
+            decode_text_bg = '#%02x%02x%02x' % (97,80,70)
+            decoded_text_label = tkinter.Label(window,text="Decoded Text : "+text,fg='white',bg=decode_text_bg,font=("Helvatica","12","bold"))
+            decoded_text_label.place(x=850,y=650)
+        
+        update_image(modified_image)    # display updated image
 
     if(c.get()==1) : 
-        message = "Enter Text"  #enter text to encode
-    elif(c.get()==2) :
-        message = "Enter Text"  #enter text to decode
-    txt_box = tkinter.Entry(window)
-    txt_label = tkinter.Label(window, text=message)
+        global txt_label
+        global txt_box
+        message = "Enter Text :"  #enter text to encode
+        txt_box = tkinter.Entry(window)
+        txt_label_bg = '#%02x%02x%02x' % (56,47,40)
+        txt_label = tkinter.Label(window, text=message,fg='white',bg=txt_label_bg, font=(None,12))
+        txt_box.place(x=20,y=330)
+        txt_label.place(x=20,y=300)
+        
+    #elif(c.get()==2) :
+        #txt_box.pack_forget()
+        #txt_label.destroy()
+
+    proceedbg = '#%02x%02x%02x' % (70,58,51)
     proceed_button = tkinter.Button(window,
             image=proceed_image_button,
             command=extract_text,
             cursor='hand2',
-            bg='grey',
-            activebackground='grey',
-            border=0)
+            bg=proceedbg,
+            activebackground=proceedbg,
+            border=0,
+            highlightthickness=0)
 
     proceed_button.place(x=20,y=380)
-    txt_box.place(x=20,y=330)
-    txt_label.place(x=20,y=300)
 
+decodebg = '#%02x%02x%02x' % (54,45,37)
+encodebg = '#%02x%02x%02x' % (52,41,35)
 rad1 = tkinter.Radiobutton(window, 
             image=encode_image_button,
             variable=c,
             value=1,
             indicator=0,    #to change style     
-            background="grey",
+            background=encodebg,
             border=0,
             command=clicked,
             cursor='hand2',
-            activebackground='grey')
+            activebackground=encodebg,
+            highlightthickness=0,
+            selectimage=encode_set_image)
 
 rad2 = tkinter.Radiobutton(window, 
             image=decode_image_button,
             variable=c,
             value=2,
             indicator=0,    #to change style
-            background="grey",
+            background=decodebg,
             border=0,
             command=clicked,
             cursor='hand2',
-            activebackground='grey')
+            activebackground=decodebg,
+            highlightthickness=0,
+            selectimage=decode_set_image)
 
 rad1.place(x=20, y=240)
 rad2.place(x=155, y=240)
@@ -196,18 +224,25 @@ def update_image(modified_image) :    #display updated image
 
     # saving the result
     def save_result() : 
-        result_img = modified_image.save("result.jpg")
+        
+        x=file.rfind('/')   # last occurance of / in file name
+        y=file.rfind('.')   # last occurance of . in file name
+        image_name=file[x+1:y:1]    # to extract only name of the image and not entire path
+        result_img = modified_image.save("Saved Images\\"+image_name+" result.png")
     
+    savebg = '#%02x%02x%02x' % (100,92,80)
     save = tkinter.Button(window,
                 image=save_image_button, 
                 command=save_result,
                 cursor='hand2',
                 border=0,
-                bg='grey',
-                activebackground='grey')
+                bg=savebg,
+                activebackground=savebg,
+                highlightthickness=0)
     save.place(x=1225,y=650)
 
-#text_label_.pack_forget()
+
+
 #reset and exit buttons
 def clear_img() :
     canvas1.delete("all")
@@ -217,15 +252,22 @@ def clear_text() :
     text_label.pack_forget()
     text=''
 
-clearimgcolor = '#%02x%02x%02x' % (70,57,51)
-clear_images = tkinter.Button(window,image=clear_images_image_button,command=clear_img,border=0,activebackground='grey',bg=clearimgcolor,highlightthickness = 0, bd = 0)clear_images.place(x=20,y=480)
-clear_text = tkinter.Button(window,image=clear_text_image_button,command=clear_text,border=0,activebackground='grey',bg='grey')
+clearimgbg = '#%02x%02x%02x' % (70,57,51)
+cleartextbg = '#%02x%02x%02x' % (65,52,45)
+quitbg = '#%02x%02x%02x' % (80,67,61)
+
+clear_images = tkinter.Button(window,image=clear_images_image_button,command=clear_img,border=0,activebackground=clearimgbg,bg=clearimgbg,highlightthickness=0)
+clear_images.place(x=20,y=480)
+clear_text = tkinter.Button(window,image=clear_text_image_button,command=clear_text,border=0,activebackground=cleartextbg,bg=cleartextbg,highlightthickness=0)
 clear_text.place(x=150,y=480)
 
 quit_button = tkinter.Button(window,
             image=exit_image_button, 
             command=window.quit,
-            border=0)
+            border=0,
+            highlightthickness=0,
+            bg=quitbg,
+            activebackground=quitbg)
 quit_button.place(x=20,y=530)
 
 window.mainloop()
