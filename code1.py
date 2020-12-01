@@ -40,6 +40,7 @@ def encode(im,text=""):
             im.putpixel((x, y), value)
     im.show(im)
     im.save("down.png")
+    return im
 
 
 def decode(im):
