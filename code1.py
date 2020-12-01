@@ -38,8 +38,8 @@ def encode(im,text=""):
                 b = (b>>4<<4)
             value = (r,g,b)
             im.putpixel((x, y), value)
-    im.show(im)
-    im.save("down.png")
+    #im.show(im)
+    #im.save("down.png")
     return im
 
 
