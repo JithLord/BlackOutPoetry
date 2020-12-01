@@ -21,15 +21,17 @@ back=ImageTk.PhotoImage(Image.open('back1.png').resize((w,h), Image.ANTIALIAS))
 canvas.create_image(int(w/2),int(h/2), anchor="center", image=back)
 canvas.back=back
 
+
 canvas1 = tkinter.Canvas(window,width=480, height=480,bg="gray50")
 canvas1.place(x=300,y=150)
-canvas1_label = tkinter.Label(window, text='Original Image', fg='white', bg='black')
-canvas1_label.place(x=500,y=120)
+colorss = '#%02x%02x%02x' % (48,39,34)
+canvas1_label = tkinter.Label(window, text='Original Image', fg='white',font=(None, 15), bg=colorss)
+canvas1_label.place(x=480,y=120)
 
 canvas2 = tkinter.Canvas(window,width=480, height=480,bg="gray50")
 canvas2.place(x=850,y=150)
-canvas2_label = tkinter.Label(window, text='Updated Image', fg='white', bg='black')
-canvas2_label.place(x=1050,y=120)
+canvas2_label = tkinter.Label(window, text='Updated Image', fg='white',font=(None, 15), bg=colorss)
+canvas2_label.place(x=1030,y=120)
 
 
 #adding image buttons : 
