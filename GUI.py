@@ -53,14 +53,16 @@ def upload_image() :
     label.place(x=30,y=200)
     disp_image(file)
 
+uploadcolor = '#%02x%02x%02x' % (50, 39, 35)
 upload = tkinter.Button(window,
                 image=upload_image_button,
                 command=upload_image,
                 borderwidth=0,
-                bg="grey",
+                bg=uploadcolor,
                 cursor='hand2',
                 activebackground='grey',
-                highlightthickness=0)
+                highlightthickness = 0, bd = 0,
+                border=0)
 upload.place(x=30,y=150)
 
 #displaying uploaded image
@@ -213,8 +215,8 @@ def clear_text() :
     text_label.pack_forget()
     text=''
 
-clear_images = tkinter.Button(window,image=clear_images_image_button,command=clear_img,border=0,activebackground='grey',bg='grey')
-clear_images.place(x=20,y=480)
+clearimgcolor = '#%02x%02x%02x' % (70,57,51)
+clear_images = tkinter.Button(window,image=clear_images_image_button,command=clear_img,border=0,activebackground='grey',bg=clearimgcolor,highlightthickness = 0, bd = 0)clear_images.place(x=20,y=480)
 clear_text = tkinter.Button(window,image=clear_text_image_button,command=clear_text,border=0,activebackground='grey',bg='grey')
 clear_text.place(x=150,y=480)
 
