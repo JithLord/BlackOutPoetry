@@ -49,8 +49,7 @@ def decodeImage(im,key=0):
     # img2.show("The smaller Image after decoding")
     img2.save("Doggy.png")
     return img1,img2
-
-            
+      
 imma1 = Image.open('decode.jpg')
 im2.show("The smaller image")
 originalImg1.show("Original Image before Encoding")
