@@ -1,4 +1,4 @@
-from code1 import decode, encode
+efrom code1 import decode, encode
 from PIL import Image
 
 im = Image.open('download2.jpg')
