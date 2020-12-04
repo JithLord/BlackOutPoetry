@@ -2,6 +2,8 @@ im1 = Image.open('some.jpg')    #The image before encoding
 originalImg1 = im1
 
 def encodeImage(im1,im2):           #im1 is larger than im2, so store in im1
+    im1 = im1.convert('RGB')
+    im2 = im2.convert('RGB')
     width1, height1 = im1.size[0], im1.size[1]
     width2, height2 = im2.size[0], im2.size[1]
 
@@ -25,15 +27,18 @@ def encodeImage(im1,im2):           #im1 is larger than im2, so store in im1
         im1.save("decode.jpg")
         print("decode.jpg")
         return im1
+    else:
+        print("Choose a larger first image")
+        return im1
 
 im2 = Image.open('download (5).jpg')    #loading the smaller img
-im1 = Image.open('some.jpg')            #Loading the larger img
+im1 = Image.open('drewRobert.png')            #Loading the larger img
 encodedImage = encodeImage(im1,im2)               
 
 
 def decodeImage(im,key=0):
+    im = im.convert('RGB')
     width, height = im.size[0], im.size[1]
-    # y1,x1=0,0
     img1 = Image.new('RGB', (width, height), color = 'white') #THe smaller Image
     img2 = Image.new('RGB', (width, height), color = 'white') #THe larger Image
     for y in range(height):
@@ -49,7 +54,8 @@ def decodeImage(im,key=0):
     # img2.show("The smaller Image after decoding")
     img2.save("Doggy.png")
     return img1,img2
-      
+
+            
 imma1 = Image.open('decode.jpg')
 im2.show("The smaller image")
 originalImg1.show("Original Image before Encoding")
