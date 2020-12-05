@@ -2,6 +2,8 @@ import tkinter
 from tkinter import filedialog
 from PIL import ImageTk,Image
 from code1 import encode,decode
+from code2 import encodeImage,decodeImage
+#from test import crop_black
 
 window = tkinter.Tk()
 window.title("Blackout Poetry")
@@ -13,10 +15,12 @@ text = ""
 text_label = ""
 image = [[]]
 img = [[]]
+img2 = [[]]
 up_image = [[]]
 txt_box=[]
 txt_lavel=""
 file=""
+file2=""
 
 canvas = tkinter.Canvas(window,width=w,height=h,highlightthickness=0)
 canvas.place(x=0,y=0)
@@ -48,6 +52,8 @@ save_image_button=ImageTk.PhotoImage(Image.open('Icons\\save.png').resize((106,3
 exit_image_button=ImageTk.PhotoImage(Image.open('Icons\\exit.png').resize((87,39), Image.ANTIALIAS)) #1.3
 encode_set_image=ImageTk.PhotoImage(Image.open('Icons\\encode_set.png').resize((118,33), Image.ANTIALIAS)) #1.3
 decode_set_image=ImageTk.PhotoImage(Image.open('Icons\\decode_set.png').resize((118,33), Image.ANTIALIAS)) #1.3
+upload_image2_button=ImageTk.PhotoImage(Image.open('Icons\\upload.png').resize((140,33), Image.ANTIALIAS)) #1.5
+enter_text_button=ImageTk.PhotoImage(Image.open('Icons\\text.png').resize((76,32), Image.ANTIALIAS)) #1.5
 
 
 
@@ -56,7 +62,7 @@ def upload_image() :
     global file
     file = filedialog.askopenfilename(initialdir = "/", 
                     title="Select An Image",
-                    filetype=(("JPEG","*.jpg"),("PNG","*.png"),("Bitmap","*.bmp")))
+                    filetype=(("PNG","*.png"),("JPEG","*.jpg"),("Bitmap","*.bmp")))
     label = tkinter.Label(window,text=file[:14]+str("...")+file[-12:],font="Helvetica 8 italic")
     label.place(x=30,y=200)
     disp_image(file)
@@ -77,18 +83,17 @@ def disp_image(file) :
     global image 
     global img
     img = Image.open(file)
+    img = img.convert('RGB')
     r_img = img     #resized image for canvas
     width,height = img.size
     ratio = width/height
     if (ratio>1) :   # landscape image
         width = 480     # max possible width in canvas
         height = (int)(width/ratio)
-        #print(width,height)
         r_img = img.resize((width,height), Image.ANTIALIAS)
     elif (ratio<1) :     #potrait image
         height = 480    #max possible height in canvas 
         width = (int)(height*ratio)
-        #print(width,height)
         r_img = img.resize((width,height), Image.ANTIALIAS)
     else :      #square image
         height = 480 
@@ -101,69 +106,107 @@ def disp_image(file) :
 
 
 
-#radio buttons  
+# radio buttons and functions
 c = tkinter.IntVar()
+d = tkinter.IntVar()
+
 def clicked():
-    #if(c.get()==1) :
-        #selection = "You have chosen to Encode"    #message
-    #else : 
-        #selection = "You have chosen to Decode"    #message
-    #label = tkinter.Label(window,text=selection)
-    #label.place(x=20, y=180)
     
-    #text entry box
-    def extract_text() :
-        #global text
-        #global text_label
-        #text = txt_box.get()
-        #txt_box.delete(0,'end')    #clear content once entered
-        #txt_button['state'] = tkinter.DISABLED     #freeze entry button
-        #text_label = tkinter.Label(window, text=text, font="Times 12")
-        #text_label.place(x=380,y=652)
-
-        #calling the functions
-        global up_image
-        if (c.get()==1) : 
-            global text
-            text = txt_box.get()
-            #txt_box.delete(0,'end')    #clear content once entered
-            #txt_button['state'] = tkinter.DISABLED     #freeze entry button
-            text_label = tkinter.Label(window,text=text,font="Times 12")
-            modified_image = encode(img,text)       #modified image is only attributes
-
-        elif (c.get()==2) :
-            text,modified_image = decode(img)
-            decode_text_bg = '#%02x%02x%02x' % (97,80,70)
-            decoded_text_label = tkinter.Label(window,text="Decoded Text : "+text,fg='white',bg=decode_text_bg,font=("Helvatica","12","bold"))
-            decoded_text_label.place(x=850,y=650)
+    def clicked_2() :
         
-        update_image(modified_image)    # display updated image
+        def extract_data() : 
 
-    if(c.get()==1) : 
-        global txt_label
-        global txt_box
-        message = "Enter Text :"  #enter text to encode
-        txt_box = tkinter.Entry(window)
-        txt_label_bg = '#%02x%02x%02x' % (56,47,40)
-        txt_label = tkinter.Label(window, text=message,fg='white',bg=txt_label_bg, font=(None,12))
-        txt_box.place(x=20,y=330)
-        txt_label.place(x=20,y=300)
+            #calling the functions
+            global up_image
+
+            if (c.get()==1 and d.get()==1) :        # encoding with text
+                global text
+                text = txt_box.get()
+                #txt_box.delete(0,'end')    #clear content once entered
+                #txt_button['state'] = tkinter.DISABLED     #freeze entry button
+                text_label = tkinter.Label(window,text=text,font="Times 12")
+                modified_image = encode(img,text)       #modified image is only attributes
+
+            elif (c.get()==2 and d.get()==1) :      # decoding with text
+                text,modified_image = decode(img)
+                decode_text_bg = '#%02x%02x%02x' % (97,80,70)
+                decoded_text_label = tkinter.Label(window,text="Decoded Text : "+text,fg='white',bg=decode_text_bg,font=("Helvatica","12","bold"))
+                decoded_text_label.place(x=850,y=650)
+            
+            elif (c.get()==1 and d.get()==2) :      # encoding with images
+                modified_image = encodeImage(img,img2)
+            
+            elif (c.get()==2 and d.get()==2) :      # decoding with images
+                modified_image = decodeImage(img)
+                #modified_image = crop_black(modified_image)
+
+            update_image(modified_image)    # display updated image
         
-    #elif(c.get()==2) :
-        #txt_box.pack_forget()
-        #txt_label.destroy()
+        if (d.get()==1) :
+            if (c.get() == 1) :     # enter text box only for encode
+                global txt_label
+                global txt_box
+                message = "Enter Text :"  #enter text to encode
+                txt_box = tkinter.Entry(window)                
+                #txt_box.insert(0,"Enter Text Here")
+                txt_box.bind("<FocusIn>",txt_box.delete(0,"end"),txt_box.config(fg='black'))
+                txt_box.bind("<FocusOut>",txt_box.delete(0,"end"),txt_box.insert(0,"Enter Text Here"))
+                txt_label_bg = '#%02x%02x%02x' % (56,47,40)
+                txt_box.place(x=130,y=340)
+        
+        elif (d.get()==2 and c.get()==1) :      #upload image only for encode
+            global file2
+            global img2
+            file2 = filedialog.askopenfilename(initialdir = "/", 
+                    title="Select An Image",
+                    filetype=(("PNG","*.png"),("JPEG","*.jpg"),("Bitmap","*.bmp")))
+            img2 = Image.open(file2) 
+            img2 = img2.convert('RGB')
 
-    proceedbg = '#%02x%02x%02x' % (70,58,51)
-    proceed_button = tkinter.Button(window,
-            image=proceed_image_button,
-            command=extract_text,
-            cursor='hand2',
-            bg=proceedbg,
-            activebackground=proceedbg,
+        proceedbg = '#%02x%02x%02x' % (70,58,51)
+        proceed_button = tkinter.Button(window,
+                image=proceed_image_button,
+                command=extract_data,
+                cursor='hand2',
+                bg=proceedbg,
+                activebackground=proceedbg,
+                border=0,
+                highlightthickness=0)
+
+        proceed_button.place(x=20,y=480)
+        
+
+    rad3 = tkinter.Radiobutton(window, 
+            image=enter_text_button,
+            variable=d,
+            value=1,
+            indicator=0,    #to change style     
+            background=encodebg,
             border=0,
+            command=clicked_2,
+            cursor='hand2',
+            activebackground=encodebg,
             highlightthickness=0)
 
-    proceed_button.place(x=20,y=380)
+    rad4 = tkinter.Radiobutton(window, 
+            image=upload_image2_button,
+            variable=d,
+            value=2,
+            indicator=0,    #to change style     
+            background=encodebg,
+            border=0,
+            command=clicked_2,
+            cursor='hand2',
+            activebackground=encodebg,
+            highlightthickness=0)
+    
+    rad3.place (x=20,y=330)
+    rad4.place (x=20,y=380)
+
+    messagebg = '#%02x%02x%02x' % (54,45,37)
+    message = tkinter.Label(window,text="Select one of the following :",font="Helvetica 10 italic",fg='white',bg=messagebg)
+    message.place(x=20,y=290)
+
 
 decodebg = '#%02x%02x%02x' % (54,45,37)
 encodebg = '#%02x%02x%02x' % (52,41,35)
@@ -257,9 +300,9 @@ cleartextbg = '#%02x%02x%02x' % (65,52,45)
 quitbg = '#%02x%02x%02x' % (80,67,61)
 
 clear_images = tkinter.Button(window,image=clear_images_image_button,command=clear_img,border=0,activebackground=clearimgbg,bg=clearimgbg,highlightthickness=0)
-clear_images.place(x=20,y=480)
+clear_images.place(x=20,y=580)
 clear_text = tkinter.Button(window,image=clear_text_image_button,command=clear_text,border=0,activebackground=cleartextbg,bg=cleartextbg,highlightthickness=0)
-clear_text.place(x=150,y=480)
+clear_text.place(x=150,y=580)
 
 quit_button = tkinter.Button(window,
             image=exit_image_button, 
@@ -268,6 +311,6 @@ quit_button = tkinter.Button(window,
             highlightthickness=0,
             bg=quitbg,
             activebackground=quitbg)
-quit_button.place(x=20,y=530)
+quit_button.place(x=20,y=630)
 
 window.mainloop()
