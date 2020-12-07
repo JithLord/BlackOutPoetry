@@ -1,6 +1,6 @@
 from PIL import Image
 import string
-    # 0 1-26 " " 27-36
+    # 0 1-26 27 28-36
     #   a-z  " "  0-9
 
 comb = [""]+[chr(x) for x in range(97,123)] +[" "]+ [str(i) for i in range(10)]    # [a:z] + [ ] + [0:9]
