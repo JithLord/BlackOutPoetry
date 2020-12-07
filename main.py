@@ -148,11 +148,10 @@ def clicked():
                 global txt_box
                 message = "Enter Text :"  #enter text to encode
                 txt_box = tkinter.Entry(window)                
-                #txt_box.insert(0,"Enter Text Here")
-                txt_box.bind("<FocusIn>",txt_box.delete(0,"end"),txt_box.config(fg='black'))
-                txt_box.bind("<FocusOut>",txt_box.delete(0,"end"),txt_box.insert(0,"Enter Text Here"))
                 txt_label_bg = '#%02x%02x%02x' % (56,47,40)
-                txt_box.place(x=130,y=340)
+                txt_label = tkinter.Label(window,text="(alphanumeric values and spaces)",font=(None,7),fg='white',bg=txt_label_bg)
+                txt_box.place (x=130,y=335)
+                txt_label.place (x=130,y=360)
         
         elif (d.get()==2 and c.get()==1) :      #upload image only for encode
             global file2
