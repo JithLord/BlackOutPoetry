@@ -290,7 +290,6 @@ def clear_img() :
     canvas2.delete("all")
 
 def clear_text() :
-    text_label.pack_forget()
     text=''
     txt_box.delete(0,'end')
 
