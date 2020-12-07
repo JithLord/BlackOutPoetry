@@ -3,7 +3,6 @@ from tkinter import filedialog
 from PIL import ImageTk,Image
 from code1 import encode,decode
 from code2 import encodeImage,decodeImage
-#from test import crop_black
 
 window = tkinter.Tk()
 window.title("Blackout Poetry")
@@ -293,6 +292,7 @@ def clear_img() :
 def clear_text() :
     text_label.pack_forget()
     text=''
+    txt_box.delete(0,'end')
 
 clearimgbg = '#%02x%02x%02x' % (70,57,51)
 cleartextbg = '#%02x%02x%02x' % (65,52,45)
