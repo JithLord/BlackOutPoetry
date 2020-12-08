@@ -21,7 +21,7 @@ def encode(im,text=""):
     for y in range(0,height):
         for x in range(0,width,2):
             [r1,g1,b1]=im.getpixel((x,y))
-            [r2,g2,b2]=im.getpixel((x+1,y))
+            [r2,g2,b2]=im.getpixel((x+1,y))         #First fill r2,g2 and b2 then r1,g1,b1
             if (len_text):      #To check if there's a character          
                 val3 = int(next(dcoded))
                 len_text-=1
