@@ -5,9 +5,12 @@
 - [x] Encode text within Images
 - [x] Decode text from Images
 - [x] Build a GUI using Tkinter for uploading and displaying Image 
+- [x] Better Layout
+- [x] Improve Button Style
+- [x] Good Background Image
+- [x] Improve the decoding and encoding algorithm
 
 ### Functionality to be added 
-- [ ] Better Layout
-- [ ] Improve Button Style
-- [ ] Good Background Image
-- [ ] Improve the decoding and encoding algorithm
+- [ ] 
+
+### Please feel free to open any issues
