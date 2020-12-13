@@ -41,18 +41,18 @@ canvas2_label.place(x=1050,y=120)
 
 
 #adding image buttons : 
-upload_image_button=ImageTk.PhotoImage(Image.open('Icons\\upload.png').resize((175,40), Image.ANTIALIAS)) #1.2
-encode_image_button=ImageTk.PhotoImage(Image.open('Icons\\encode.png').resize((118,33), Image.ANTIALIAS)) #1.3
-decode_image_button=ImageTk.PhotoImage(Image.open('Icons\\decode.png').resize((118,33), Image.ANTIALIAS)) #1.3
-proceed_image_button=ImageTk.PhotoImage(Image.open('Icons\\proceed.png').resize((128,38), Image.ANTIALIAS)) #1.2
-clear_text_image_button=ImageTk.PhotoImage(Image.open('Icons\\clear_text.png').resize((93,29), Image.ANTIALIAS))
-clear_images_image_button=ImageTk.PhotoImage(Image.open('Icons\\clear_images.png').resize((110,29), Image.ANTIALIAS))
-save_image_button=ImageTk.PhotoImage(Image.open('Icons\\save.png').resize((106,38), Image.ANTIALIAS))
-exit_image_button=ImageTk.PhotoImage(Image.open('Icons\\exit.png').resize((87,39), Image.ANTIALIAS)) #1.3
-encode_set_image=ImageTk.PhotoImage(Image.open('Icons\\encode_set.png').resize((118,33), Image.ANTIALIAS)) #1.3
-decode_set_image=ImageTk.PhotoImage(Image.open('Icons\\decode_set.png').resize((118,33), Image.ANTIALIAS)) #1.3
-upload_image2_button=ImageTk.PhotoImage(Image.open('Icons\\upload.png').resize((140,33), Image.ANTIALIAS)) #1.5
-enter_text_button=ImageTk.PhotoImage(Image.open('Icons\\text.png').resize((76,32), Image.ANTIALIAS)) #1.5
+upload_image_button=ImageTk.PhotoImage(Image.open('Icons/upload.png').resize((175,40), Image.ANTIALIAS)) #1.2
+encode_image_button=ImageTk.PhotoImage(Image.open('Icons/encode.png').resize((118,33), Image.ANTIALIAS)) #1.3
+decode_image_button=ImageTk.PhotoImage(Image.open('Icons/decode.png').resize((118,33), Image.ANTIALIAS)) #1.3
+proceed_image_button=ImageTk.PhotoImage(Image.open('Icons/proceed.png').resize((128,38), Image.ANTIALIAS)) #1.2
+clear_text_image_button=ImageTk.PhotoImage(Image.open('Icons/clear_text.png').resize((93,29), Image.ANTIALIAS))
+clear_images_image_button=ImageTk.PhotoImage(Image.open('Icons/clear_images.png').resize((110,29), Image.ANTIALIAS))
+save_image_button=ImageTk.PhotoImage(Image.open('Icons/save.png').resize((106,38), Image.ANTIALIAS))
+exit_image_button=ImageTk.PhotoImage(Image.open('Icons/exit.png').resize((87,39), Image.ANTIALIAS)) #1.3
+encode_set_image=ImageTk.PhotoImage(Image.open('Icons/encode_set.png').resize((118,33), Image.ANTIALIAS)) #1.3
+decode_set_image=ImageTk.PhotoImage(Image.open('Icons/decode_set.png').resize((118,33), Image.ANTIALIAS)) #1.3
+upload_image2_button=ImageTk.PhotoImage(Image.open('Icons/upload.png').resize((140,33), Image.ANTIALIAS)) #1.5
+enter_text_button=ImageTk.PhotoImage(Image.open('Icons/text.png').resize((76,32), Image.ANTIALIAS)) #1.5
 
 
 
@@ -269,7 +269,7 @@ def update_image(modified_image) :    #display updated image
         x=file.rfind('/')   # last occurance of / in file name
         y=file.rfind('.')   # last occurance of . in file name
         image_name=file[x+1:y:1]    # to extract only name of the image and not entire path
-        result_img = modified_image.save("Saved Images\\"+image_name+" result.png")
+        result_img = modified_image.save("Saved Images/"+image_name+" result.png")
     
     savebg = '#%02x%02x%02x' % (100,92,80)
     save = tkinter.Button(window,
