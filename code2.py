@@ -1,5 +1,5 @@
-im1 = Image.open('some.jpg')    #The image before encoding
-originalImg1 = im1
+#im1 = Image.open('some.jpg')    #The image before encoding
+#originalImg1 = im1
 
 def encodeImage(im1,im2):           #im1 is larger than im2, so store in im1
     im1 = im1.convert('RGB')
@@ -31,9 +31,9 @@ def encodeImage(im1,im2):           #im1 is larger than im2, so store in im1
         print("Choose a larger first image")
         return im1
 
-im2 = Image.open('download (5).jpg')    #loading the smaller img
-im1 = Image.open('drewRobert.png')            #Loading the larger img
-encodedImage = encodeImage(im1,im2)               
+#im2 = Image.open('download (5).jpg')    #loading the smaller img
+#im1 = Image.open('drewRobert.png')            #Loading the larger img
+#encodedImage = encodeImage(im1,im2)               
 
 
 def decodeImage(im,key=0):
@@ -56,14 +56,14 @@ def decodeImage(im,key=0):
     return img1,img2
 
             
-imma1 = Image.open('decode.jpg')
-im2.show("The smaller image")
-originalImg1.show("Original Image before Encoding")
-encodedImage.show("Encoded Image")
-print(im1.getpixel((100,100)))
-print(im2.getpixel((100,100)))
-print(encodedImage.getpixel((100,100)))
+#imma1 = Image.open('decode.jpg')
+#im2.show("The smaller image")
+#originalImg1.show("Original Image before Encoding")
+#encodedImage.show("Encoded Image")
+#print(im1.getpixel((100,100)))
+#print(im2.getpixel((100,100)))
+#print(encodedImage.getpixel((100,100)))
 
-first,second=decodeImage(encodedImage)
-first.show("The original Image 1 after decoding")
-second.show("The original Image 2 after decoding")
+#first,second=decodeImage(encodedImage)
+#first.show("The original Image 1 after decoding")
+#second.show("The original Image 2 after decoding")
