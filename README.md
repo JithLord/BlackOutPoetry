@@ -2,6 +2,9 @@
 ## IMPORTANT
 You are free to use the code from this repository. Please do give us credits anytime you use the code or refer to the code.
 
+## How to use
+Run the main.py file
+
 ### Functionality completed 
 - [x] Encode text within Images
 - [x] Decode text from Images
