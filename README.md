@@ -17,7 +17,11 @@ Run the main.py file
 
 ## BlackOut Poetry UI
 ![image](https://user-images.githubusercontent.com/45201620/113385517-eb35f180-93a5-11eb-9dcc-ddddcc1dd28e.png)
-![Original Image](https://github.com/JithLord/BlackOutPoetry/blob/main/Sample%20Images/dolphin.jpg?raw=true) ![alt text](https://github.com/JithLord/BlackOutPoetry/blob/main/Sample%20Images/scenary.jpg?raw=true)
+![image](https://user-images.githubusercontent.com/45201620/113386250-7794e400-93a7-11eb-963c-9504d6b1c0e9.png)
+                Original Image                     Encoded Image
+![image](https://user-images.githubusercontent.com/45201620/113386652-51bc0f00-93a8-11eb-94ec-7fce58d6814e.png)
+
+Image after Encoding
 ### Functionality to be added 
 - [ ] ..
 
