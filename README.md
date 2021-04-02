@@ -15,8 +15,9 @@ Run the main.py file
 - [x] Good Background Image
 - [x] Improve the decoding and encoding algorithm
 
+## BlackOut Poetry UI
 ![image](https://user-images.githubusercontent.com/45201620/113385517-eb35f180-93a5-11eb-9dcc-ddddcc1dd28e.png)
-
+![alt text](https://github.com/JithLord/BlackOutPoetry/blob/main/Sample%20Images/dolphin.jpg?raw=true)
 ### Functionality to be added 
 - [ ] ..
 
