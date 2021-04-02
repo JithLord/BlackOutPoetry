@@ -5,6 +5,7 @@ You are free to use the code from this repository. Please do give us credits any
 This works only for **WINDOWS**, Linux support coming soon
 ## How to use
 Run the main.py file
+Note that since each character is stored in 2 pixels. The number of characters that can be encoded is reduced to 1/3rd of product of image dimensions. The characters also includes spaces.
 
 ### Functionality completed 
 - [x] Encode text within Images
@@ -28,7 +29,10 @@ Run the main.py file
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  BlackOut Poetry Layout after Encoding
 
 ### Functionality to be added 
-- [ ] ..
+- [ ] Using some sort of cypher (Caesar's ?)
+- [ ] Linux Support
+- [ ] Support for Uppercase characters
+- [ ] Formatting input text so that each of the starting letters are capitalized which can eliminate the use of whitespaces, when support for uppercase is done 
 
 ### Please feel free to open any issues
 My Email: 308rwe3oa@relay.firefox.com   // Dont't Worry this email works
