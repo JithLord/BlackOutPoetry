@@ -37,3 +37,5 @@ Note that since each character is stored in 2 pixels. The number of characters t
 
 ### Please feel free to open any issues
 My Email: 308rwe3oa@relay.firefox.com   // Dont't Worry this email works
+
+@all-contributors bot please add @gc437 UI Design
