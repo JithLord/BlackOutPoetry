@@ -18,7 +18,7 @@ Note that since each character is stored in 2 pixels. The number of characters t
 
 ## BlackOut Poetry UI
 <p align="center">
-![image](https://user-images.githubusercontent.com/45201620/113385517-eb35f180-93a5-11eb-9dcc-ddddcc1dd28e.png)</p>
+<img src='https://user-images.githubusercontent.com/45201620/113385517-eb35f180-93a5-11eb-9dcc-ddddcc1dd28e.png'></p>
 <br /> <br />
 
 ### Image Steganography
