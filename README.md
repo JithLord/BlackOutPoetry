@@ -43,9 +43,9 @@ My Email: 308rwe3oa@relay.firefox.com   // Don't Worry this email works
   <tr>
     <td align="center"><a href="https://github.com/gc347"><img src="https://avatars.githubusercontent.com/u/72063820?v=4" width="100px;" alt=""/><br /><sub><b>Gaurav R</b></sub></a><br /><a href="https://github.com/gc347" title="UI Design">👀</a><a href="https://github.com/JithLord/BlackOutPoetry/commits?author=gc347" title="Documentation">📖</a></td>
    
-   <td align="center"><a href="https://github.com/JithLord"><img src="https://avatars.githubusercontent.com/u/45201620?v=4" width="100px;" alt=""/><br /><sub><b>JithLord</b></sub></a><br /><a href="https://github.com/JithLord/BlackOutPoetry/commits?author=JithLord" title="Documentation">📖</a> <a href="#tool-jfmengels" title="Algorithm">🔧</a></td>
+   <td align="center"><a href="https://github.com/JithLord"><img src="https://avatars.githubusercontent.com/u/45201620?v=4" width="100px;" alt=""/><br /><sub><b>JithLord</b></sub></a><br /><a href="https://github.com/JithLord/BlackOutPoetry/commits?author=JithLord" title="Documentation">📖</a> <a title="Algorithm">🔧</a></td>
 
-   <td align="center"><a href="https://github.com/sneha-l"><img src="https://avatars.githubusercontent.com/u/73346512?v=4" width="100px;" alt=""/><br /><sub><b>Sneha L</b></sub></a><br /><a href="https://github.com/JithLord/BlackOutPoetry/commits?author=sneha-l" title="Documentation">📖</a><a href="#tool-jfmengels" title="Tools">🔧</a></td>
+   <td align="center"><a href="https://github.com/sneha-l"><img src="https://avatars.githubusercontent.com/u/73346512?v=4" width="100px;" alt=""/><br /><sub><b>Sneha L</b></sub></a><br /><a href="https://github.com/JithLord/BlackOutPoetry/commits?author=sneha-l" title="Documentation">📖</a><a  title="Tools">🔧</a></td>
    
   </tr>
 </table>
