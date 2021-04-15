@@ -17,7 +17,8 @@ Note that since each character is stored in 2 pixels. The number of characters t
 - [x] Improve the decoding and encoding algorithm
 
 ## BlackOut Poetry UI
-![image](https://user-images.githubusercontent.com/45201620/113385517-eb35f180-93a5-11eb-9dcc-ddddcc1dd28e.png)
+<p align="center">
+![image](https://user-images.githubusercontent.com/45201620/113385517-eb35f180-93a5-11eb-9dcc-ddddcc1dd28e.png)</p>
 <br /> <br />
 
 ### Image Steganography
@@ -26,7 +27,7 @@ Note that since each character is stored in 2 pixels. The number of characters t
 <br /><br />
  
 ![image](https://user-images.githubusercontent.com/45201620/113386652-51bc0f00-93a8-11eb-94ec-7fce58d6814e.png)
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  BlackOut Poetry Layout after Encoding
+<p align="center"> BlackOut Poetry Layout after Encoding </p>
 
 ### Functionality to be added 
 - [ ] Using some sort of cypher (Caesar's ?)
