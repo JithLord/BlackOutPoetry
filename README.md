@@ -36,7 +36,7 @@ Note that since each character is stored in 2 pixels. The number of characters t
 - [ ] Formatting input text so that each of the starting letters are capitalized which can eliminate the use of whitespaces, when support for uppercase is done 
 
 ### Please feel free to open any issues
-My Email: 308rwe3oa@relay.firefox.com   // Dont't Worry this email works
+My Email: 308rwe3oa@relay.firefox.com   // Don't Worry this email works
 
 <table>
   <tr>
