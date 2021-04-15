@@ -38,6 +38,7 @@ Note that since each character is stored in 2 pixels. The number of characters t
 ### Please feel free to open any issues
 My Email: 308rwe3oa@relay.firefox.com   // Don't Worry this email works
 
+## Contributors
 <table>
   <tr>
     <td align="center"><a href="https://github.com/gc347"><img src="https://avatars.githubusercontent.com/u/72063820?v=4" width="100px;" alt=""/><br /><sub><b>Gaurav R</b></sub></a><br /><a href="https://github.com/gc347" title="UI Design">👀</a><a href="https://github.com/JithLord/BlackOutPoetry/commits?author=gc347" title="Documentation">📖</a></td>
