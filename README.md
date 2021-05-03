@@ -1,3 +1,5 @@
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+
 ![image](https://user-images.githubusercontent.com/45201620/97779863-fabacf80-1ba6-11eb-8b9b-be9c91aa9176.png)
 ## IMPORTANT
 You are free to use the code from this repository. Please do give us credits anytime you use the code or refer to the code.
